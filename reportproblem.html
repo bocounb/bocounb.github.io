@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Report a Problem</title>
+</head>
+<body>
+    <h1>Report a Problem</h1>
+    <p>Please use the form below to report any problems you encounter on our website. The information will be used to create a draft email.</p>
+
+    <form>
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" required><br><br>
+
+        <label for="email">Your Email:</label>
+        <input type="email" id="email" required><br><br>
+
+        <label for="problem">Describe the Problem:</label>
+        <textarea id="problem" rows="4" required></textarea><br><br>
+
+        <input type="button" value="Create Draft Email" onclick="createDraftEmail()">
+    </form>
+
+    <script>
+        function createDraftEmail() {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var problem = document.getElementById("problem").value;
+
+            var toEmail = "iegoss01@bvsd.org";
+            var subject = "Problem Report from " + name;
+            var body = "Name: " + name + "\nEmail: " + email + "\n\nProblem Description:\n" + problem;
+
+            // Create a mailto link
+            var mailtoLink = "mailto:" + toEmail + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+
+            // Open the user's default email client with the draft email
+            window.location.href = mailtoLink;
+        }
+    </script>
+</body>
+</html>
